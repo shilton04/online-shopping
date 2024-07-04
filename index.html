@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <nav>
+            <h1 style="font-style: italic;">On TRACK</h1>
+           <form action="#cat">
+        <input type="text" v-model="searchTerm" placeholder="Search products...">
+        <button type="submit" style="margin-top: 5px; border-radius: 10px;"><img src="Images/search.png" height="16px" width="20px" style="border-radius: 10px;margin-top: 2px;"></button>
+    </form>
+            <div class="cart-container">
+                <span class="cart-icon"></span>
+                <span class="cart-count">{{ cartCount }}</span>
+            </div>
+            
+        </nav>
+        <div>
+            <img class="im" src="Images/wall.webp" >
+        </div>
+
+    <div class="product-catalog" id="cat">
+            <product 
+                v-for="product in filteredProducts" 
+                :key="product.id" 
+                :product="product"
+                @add-to-cart="addToCart"
+            ></product>
+        </div>
+
+  <footer>
+            <p>&copy; 2024 Product Store. All rights reserved.</p>
+     </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
